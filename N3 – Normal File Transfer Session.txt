@@ -1,0 +1,19 @@
+
+mkdir -p ~/n3_files
+cd ~/n3_files
+
+for i in {1..20}; do
+  echo "file $i" > file$i.txt
+done
+
+cd ~/n3_files
+
+for i in {1..20}; do
+  scp file$i.txt aawalker6@192.168.56.105:~/n3_uploads/
+done
+
+mkdir -p ~/n3_downloads
+
+for i in {1..20}; do
+  scp aawalker6@192.168.56.105:~/n3_uploads/file$i.txt ~/n3_downloads/
+done

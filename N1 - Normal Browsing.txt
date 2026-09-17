@@ -1,0 +1,15 @@
+sites=(
+  "https://www.google.com"
+  "https://www.wikipedia.org"
+  "https://github.com"
+  "https://www.stackoverflow.com"
+  "https://www.reddit.com"
+)
+
+for i in $(seq 1 150); do
+  for s in "${sites[@]}"; do
+    curl -m 5 -s -o /dev/null "$s"
+  done
+done
+
++ Small file downloaded through Firefox

@@ -1,0 +1,15 @@
+ssh aawalker6@<server-ip>
+
+Commands Executed:
+
+pwd
+ls -l
+whoami
+uname -a
+df -h
+ps aux | head
+cat /etc/os-release
+nano notes.txt
+echo "config" > config.txt
+scp config.txt aawalker6@<server-ip>:~/uploaded.txt
+exit
