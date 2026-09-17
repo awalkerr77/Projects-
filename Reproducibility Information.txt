@@ -1,0 +1,129 @@
+Network Environment
+
+The dataset was generated in a controlled virtual laboratory environment using VirtualBox. All network traffic was created within an isolated network to ensure repeatability and prevent interaction with external production systems.
+
+
+Machines Involved       
+
+Ubuntu VM Server
+Kali Linux VM	
+
+Machine	Roles
+
+Ubuntu Server: Target server hosting services and receiving traffic generated during the scenarios
+Kali Linux: Attacker machine, packet capture machine, and traffic generation machine used for both benign and suspicious scenarios.
+
+
+Operating Systems and Software
+
+Ubuntu Server Linux
+Kali Linux
+OpenSSH Server
+Firefox Web Browser
+Curl
+VirtualBox
+
+
+Traffic Generation Tools
+
+The following tools and commands were used to generate network traffic:
+
+Benign Traffic:
+
+Firefox web browsing
+Curl-based HTTP/HTTPS requests
+SSH administrative sessions
+SCP file transfers
+
+Suspicious and Attack Traffic:
+
+Nmap (port scanning and service enumeration)
+Hydra (SSH brute-force attacks)
+SSH command execution
+SCP-based data exfiltration
+Automated HTTP request scripts
+
+
+Traffic Capture
+
+Network traffic was captured primarily on the Kali Linux VM using:
+
+tcpdump
+
+
+Capture Command:
+
+sudo tcpdump -i any -w scenario_name.pcap
+
+
+Flow Extraction
+
+Packet captures (PCAP files) were converted into flow-based records for analysis.
+
+
+Flow Extraction Tool:
+
+NTLFlowLyzer
+
+
+Flow Features Extracted:
+
+Source IP Address
+Destination IP Address
+Source Port
+Destination Port
+Protocol
+Flow Duration
+Packet Counts
+Byte Counts
+Additional statistical flow features
+
+
+Configuration
+
+NTLFlowLyzer was executed using a custom configuration file (config.json) to process PCAP files and generate CSV flow records. Default flow timeout and feature extraction settings were used.
+
+
+Network Configuration: 
+
+Virtualization Platform: Oracle VirtualBox
+Network Type: Host-Only Network
+Communication: Kali Linux ↔ Ubuntu Server
+Traffic Types: HTTP/HTTPS, SSH, SCP, ICMP, Port Scanning, Brute Force Authentication
+Capture Format: PCAP
+Flow Format: CSV(NTLFlowLyzer)
+
+
+Kali Linux VM:
+
+Operating System: Kali GNU/Linux Rolling
+Kernel Version: Linux 6.11.2-amd64
+Virtualization Platform: Oracle VirtualBox
+Network Adapters: NAT and Host-Only Adapter
+Base Memory: 4096 MB
+Video Memory: 128 MB
+IP Address: 10.0.2.15
+Tools Installed: Nmap, Hydra, OpenSSH Client, SCP, Curl, Wireshark, tcpdump, NTLFlowLyzer
+
+
+Ubuntu Server:
+
+Operating System: Ubuntu Server 24.04 LTS
+Virtualization Platform: Oracle VirtualBox
+Network Adapters: NAT and Host-Only Adapter
+Base Memory: 4096 MB
+Video Memory: 128 MB
+IP Address: 192.168.56.105
+Services Enabled: OpenSSH Server, SCP/File Transfer Services, HTTP/Web Services
+Tools Installed: OpenSSH Server
+
+
+Dataset Output Structure
+
+Each scenario contains:
+
+traffic.pcap
+flows.csv
+
+
+The resulting dataset contains both benign and suspicious behaviors with associated behavior labels and MITRE ATT&CK mappings for relevant attack scenarios.
