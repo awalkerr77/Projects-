@@ -1,0 +1,17 @@
+mkdir -p ~/a4_data
+cd ~/a4_data
+
+echo "record 1" > file1.txt
+echo "record 2" > file2.txt
+echo "record 3" > file3.txt
+
+tar -cvf sensitive_test_data.tar .
+ls -lh sensitive_test_data.tar
+
+mkdir -p ~/a4_downloads
+cd ~/a4_downloads
+
+
+for i in {1..300}; do
+    scp aawalker6@192.168.56.105:~/sensitive_test_data.tar exfil_$i.tar
+done

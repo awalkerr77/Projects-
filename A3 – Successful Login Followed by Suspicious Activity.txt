@@ -1,0 +1,24 @@
+ssh aawalker6@server-ip
+
+pwd
+ls -lah
+whoami
+hostname
+ip a
+
+mkdir -p test-folder
+echo "secret1" > test-folder/file1.txt
+echo "secret2" > test-folder/file2.txt
+echo "secret3" > test-folder/file3.txt
+
+tar -cvf backup_2026.tar test-folder
+
+mkdir -p ~/a3_downloads
+cd ~/a3_downloads
+
+for i in {1..10}; do
+    scp aawalker6@192.168.56.105:~/backup_2026.tar backup_copy_$i.tar
+done
+
+
+
